@@ -1,0 +1,12 @@
+name: 'Check for Valid JSON'
+description: 'Parses a JSON object from a file, or fails'
+inputs:
+  path-to-file:  # id of input
+    description: 'path to JSON file to attempt to parse'
+    required: true
+outputs:
+  is-valid-json:
+    description: 'whether the JSON file was parsed successfully'
+runs:
+  using: 'node12'
+  main: 'index.js'

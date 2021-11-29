@@ -1,0 +1,19 @@
+on: [push]
+
+jobs:
+  test_is-valid-json-action:
+    runs-on: ubuntu-latest
+    name: A job to test whether the is-valid-json is working properly
+    steps:
+      # To use this repository's private action,
+      # you must check out the repository
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: check-validity
+        uses: ./ # Uses an action in the root directory
+        id: check-validity
+        with:
+          path-to-file: './test-data/valid.json'
+      - name: print-validity
+        run: echo "The valid file was valid JSON ${{ steps.check-validity.outputs.is-valid-json }}"
+     
